@@ -1,0 +1,14 @@
+name: Test Upload Artifact
+
+on: [push]
+
+jobs:
+  test-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Upload artifact test
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-file
+          path: README.md
