@@ -12,17 +12,18 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Set up Pages
+      - name: Setup Pages
         uses: actions/configure-pages@v2
 
-      - name: Upload site artifact
+      - name: Upload artifact (your static site)
         uses: actions/upload-pages-artifact@v2
         with:
-          path: .
+          path: index.html
 
   deploy-site:
     needs: deploy
@@ -30,7 +31,6 @@ jobs:
     permissions:
       pages: write
       id-token: write
-
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
